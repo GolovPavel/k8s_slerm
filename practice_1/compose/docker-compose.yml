@@ -5,16 +5,20 @@ services:
   build: .
   ports:
    - "8080:5000"
+  restart: always
   depends_on:
    redis:
     condition: service_healthy
 
  redis:
   image: redis:alpine
+  restart: always
   volumes:
    - type: volume
      source: redis-data
      target: /data
+  cpus: 0.5
+  mem_limit: 500m
   healthcheck:
    test: ["CMD", "redis-cli", "ping"]
    interval: 3s
