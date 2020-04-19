@@ -8,7 +8,7 @@ Creates 2 containers:
 For the redis container creates the volume and limits by cpus and memory.
 The web application is dependend on redis server using health check.
 
-## How to start the applications
+## How to start applications
 
 ```
 docker-compose up
