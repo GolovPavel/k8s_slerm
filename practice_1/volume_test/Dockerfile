@@ -1,4 +1,3 @@
 FROM redis
 
 VOLUME /data
- 
