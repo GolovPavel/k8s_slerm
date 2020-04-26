@@ -1,4 +1,4 @@
-# Slerm everning school repository
+# Slerm evening school repository
 
 https://slurm.io/evening
 
