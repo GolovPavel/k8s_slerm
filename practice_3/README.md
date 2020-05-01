@@ -1,4 +1,4 @@
-# Therd practice of the everning school
+# Third practice of the everning school
 
 Main topics:
 - Basic abstractions of k8s: Service, Ingress, ConfigMap, Secret, PV, PVC;
