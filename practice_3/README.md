@@ -5,6 +5,6 @@ Main topics:
 
 ## References
 
-(Nginx deployment using above abstractions)[https://github.com/GolovPavel/k8s_slerm/tree/master/practice_3/task_1]
+[Nginx deployment using above abstractions](https://github.com/GolovPavel/k8s_slerm/tree/master/practice_3/task_1)
 
-(Fileshare deployment using PV, PVC)[https://github.com/GolovPavel/k8s_slerm/tree/master/practice_3/task_2]
+[Fileshare deployment using PV, PVC](https://github.com/GolovPavel/k8s_slerm/tree/master/practice_3/task_2)
