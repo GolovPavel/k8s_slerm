@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: app-dual
+  annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+    - host: s003142.k8s.slurm.io
+      http:
+        paths:
+          - path: /app/(.*)
+            backend:
+              serviceName: app
+              servicePort: 80
+          - path: /sec/(.*)
+            backend:
+              serviceName: app-secret 
+              servicePort: 80
+          - path: /app(/secret/password)
+            backend:
+              serviceName: app-secret 
+              servicePort: 80
