@@ -1,4 +1,11 @@
-# Docker and docker-compose practice
+# First practice of the everning school
+
+Main topics:
+- limits of the docker containers;
+- volumes for docker containers;
+- docker compose.
+
+## References
 
 [How to limit container resources](https://github.com/GolovPavel/k8s_slerm/tree/master/practice_1/test_limit)
 
