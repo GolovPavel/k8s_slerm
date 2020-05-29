@@ -1,0 +1,18 @@
+*** completion.bash.inc.orig 2020-04-18 16:19:09.416273964 +0300
+--- completion.bash.inc   2020-02-01 16:11:19.584104656 +0300
+*************** __start_kubectl()
+*** 12300,12309 ****
+--- 12300,12312 ----
+      __kubectl_handle_word
+  }
+
++ alias k=kubectl
+  if [[ $(type -t compopt) = "builtin" ]]; then
+      complete -o default -F __start_kubectl kubectl
++     complete -o default -F __start_kubectl k
+  else
+      complete -o default -o nospace -F __start_kubectl kubectl
++     complete -o default -o nospace -F __start_kubectl k
+  fi
+
+  # ex: ts=4 sw=4 et filetype=sh
