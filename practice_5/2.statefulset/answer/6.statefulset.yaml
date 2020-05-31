@@ -1,0 +1,63 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: base
+spec:
+  serviceName: base
+  replicas: 3
+  selector:
+    matchLabels:
+      app: base
+  template:
+    metadata:
+      labels:
+        app: base
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - base
+            topologyKey: "kubernetes.io/hostname"
+      initContainers:
+      - image: k8s.gcr.io/busybox
+        name: touch-file
+        command: [ "sh", "-c"]
+        args:
+          - touch "/data/$(hostname).$(date)"
+        volumeMounts:
+        - name: data
+          mountPath: /data
+      containers:
+      - image: k8s.gcr.io/busybox
+        name: node-name
+        command: [ "sh", "-c"]
+        args:
+        - while true; do
+            echo -en '\n';
+            date;
+            ls /data;
+            sleep 10;
+          done;
+        readinessProbe:
+          exec:
+            command: ["sh", "-c", "[ $(hostname) != base-1 ]"]
+          periodSeconds: 5
+          timeoutSeconds: 1
+        volumeMounts:
+          - name: data
+            mountPath: /data
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi
+        storageClassName: local-storage
